@@ -53,18 +53,14 @@ public class RegService {
 	        
 	        optionalVenue.ifPresent(registration::setEvent);
 	    }
-		if (registration.userId != null) {
-	        Optional<User1> optionaluser = userRepo.findById(registration.userId);
-	        
-	        optionaluser.ifPresent(registration::setUser1);
-	    }
+		
 	    regRepo.save(registration);
 	    return registration;
     }
-	public boolean isUserRegisteredForEvent(Long userId, Long eventId) {
+	public boolean isUserRegisteredForEvent(String userId, Long eventId) {
 		Query query = entityManager.createQuery(
 				"SELECT COUNT(r) FROM Registration r " +
-				        "WHERE r.user1.UserID = :userId AND r.event.eventID = :eventId"
+				        "WHERE r.userId = :userId AND r.event.eventID = :eventId"
 				);
 		query.setParameter("userId", userId);
 		query.setParameter("eventId", eventId);

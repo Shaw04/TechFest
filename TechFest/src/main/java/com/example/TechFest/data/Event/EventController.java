@@ -34,6 +34,7 @@ public class EventController {
 
 	@GetMapping
 	public List<Event> GetEvents(){
+		System.out.println("you called here");
 		return eventService.GetEvents();
 	}
 	

@@ -41,7 +41,7 @@ public class RegController {
 
 	
 	@GetMapping("/status")
-	public ResponseEntity<Boolean> checkRegistrationStatus(@RequestParam("userId") Long userId, @RequestParam("eventId") Long eventId){
+	public ResponseEntity<Boolean> checkRegistrationStatus(@RequestParam("userId") String userId, @RequestParam("eventId") Long eventId){
 		System.out.println(userId+" "+ eventId);
 		boolean isRegistered = regService.isUserRegisteredForEvent(userId, eventId);
 		

@@ -1,9 +1,8 @@
 package com.example.TechFest.data.User1;
 
 
-import java.util.*;
 
-import com.example.TechFest.data.Registration.Registration;
+
 
 import jakarta.persistence.*;
 
@@ -27,8 +26,8 @@ public class User1 {
 	String Email;
 	String Role;
 	
-	@OneToMany(mappedBy = "user1", cascade = CascadeType.ALL)
-    private List<Registration> registrations;
+//	@OneToMany(mappedBy = "user1", cascade = CascadeType.ALL)
+//    private List<Registration> registrations;
 	
 	public Long getUserID() {
 		return UserID;

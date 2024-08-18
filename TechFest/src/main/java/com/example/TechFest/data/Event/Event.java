@@ -36,7 +36,7 @@ public class Event {
 	String date;
 	@Column(name = "time")
 	String Time;
-	@Column(name = "logo")
+	@Column(name = "logo",length=1000)
 	String Logo;
 	
 	
@@ -53,7 +53,7 @@ public class Event {
 	}
 
 
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne
 	@JoinColumn(name = "venueid")
 	private Venue venue;
 	
@@ -80,15 +80,14 @@ public class Event {
 		this.sponserId = sponserId;
 	}
 	
-	public void update(String title, String description, String date, String time, Long venueId, Long userId,
-			Long sponserId) {
+	public void update(String title, String description, String date, String time, Long venueId, 
+			String Logo) {
 		this.Title = title;
 		this.Description = description;
 		this.date = date;
 		this.Time = time;
 		this.venueId = venueId;
-		this.userId = userId;
-		this.sponserId = sponserId;
+		this.Logo = Logo;
 	}
 
 

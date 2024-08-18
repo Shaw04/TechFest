@@ -1,7 +1,7 @@
 package com.example.TechFest.data.Registration;
 
 import com.example.TechFest.data.Event.Event;
-import com.example.TechFest.data.User1.User1;
+
 
 import jakarta.persistence.*;
 
@@ -32,13 +32,14 @@ public class Registration {
 	@Transient
 	Long eventId;
 	
-	@ManyToOne
-    @JoinColumn(name = "userid")
-    private User1 user1;
+//	@ManyToOne
+//    @JoinColumn(name = "userid")
+//    private User1 user1;
 	
 	
-	@Transient
-	Long userId;
+	
+	@Column(name = "user_id")
+	 String userId;
 	
 	
 	public Long getRegID() {
@@ -66,16 +67,11 @@ public class Registration {
 	public void setEventId(Long eventId) {
 		this.eventId = eventId;
 	}
-	public User1 getUser1() {
-		return user1;
-	}
-	public void setUser1(User1 user1) {
-		this.user1 = user1;
-	}
-	public Long getUserId() {
+	
+	public String getUserId() {
 		return userId;
 	}
-	public void setUserId(Long userId) {
+	public void setUserId(String userId) {
 		this.userId = userId;
 	}
 	

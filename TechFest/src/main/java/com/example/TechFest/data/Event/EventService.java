@@ -13,6 +13,8 @@ import com.example.TechFest.data.User1.UserRepo;
 import com.example.TechFest.data.Venue.Venue;
 import com.example.TechFest.data.Venue.VenueRepo;
 
+import jakarta.transaction.Transactional;
+
 
 
 
@@ -37,7 +39,9 @@ public class EventService {
 	}
 
 	public List<Event> GetEvents(){
+		System.out.println("you called here");
 		return eventRepo.findAll();
+		
 	}
 	
 	public Event addNewEvent( Event event){
@@ -78,7 +82,7 @@ public class EventService {
         }
         eventRepo.deleteById(id);
     }
-	
+		@Transactional
 	public Event updateEvent(Long id,Event event) {
 		Event event2 = eventRepo.findById(id).orElseThrow(()-> new IllegalStateException("does not exist"));
 		
@@ -102,7 +106,7 @@ public class EventService {
 	        optionalsponser.ifPresent(event2::setSponsor);
 	    }
 		
-		event2.update(event.Title,event.Description,event.date,event.Time,event.venueId,event.userId,event.sponserId);
+		event2.update(event.Title,event.Description,event.date,event.Time,event.venueId,event.Logo);
 		return event2;
 	}
 	
